@@ -74,4 +74,23 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  // Color canasta
+  --ion-color-canasta: #358600;
+  --ion-color-canasta-rgb: 53,134,0;
+  --ion-color-canasta-contrast: #ffffff;
+  --ion-color-canasta-contrast-rgb: 255,255,255;
+  --ion-color-canasta-shade: #2f7600;
+  --ion-color-canasta-tint: #49921a;
+
+}
+
+.ion-color-canasta{
+  --ion-color-base:var(--ion-color-canasta) !important; 
+  --ion-color-base-rgb:var(--ion-color-canasta-rgb) !important;
+  --ion-color-contrast:var(--ion-color-canasta-contrast) !important;
+  --ion-color-contrast-rgb:var(--ion-color-canasta-contrast-rgb) !important;
+  --ion-color-shade:var(--ion-color-canasta-shade) !important;
+  --ion-color-tint:var(--ion-color-canasta-tint) !important;
+
 }

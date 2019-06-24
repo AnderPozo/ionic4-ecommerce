@@ -1,0 +1,40 @@
+<ion-menu side="start" 
+          menuId="primerMenu"
+          contentId="principal">
+    <ion-header>
+      <ion-toolbar color="canasta">
+        <ion-title>Menu principal</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+
+        <ion-item>
+                <ion-icon slot="start" name="home" color="canasta"></ion-icon>
+                <ion-label>    Inicio</ion-label>
+        </ion-item>
+
+        <ion-item-divider color="canasta">
+            <ion-label>
+              Categorias
+            </ion-label>
+          </ion-item-divider>
+
+
+        <ion-item *ngFor="let c of componentes"
+                  detail>
+          <ion-avatar slot="start">
+            <img src="{{c.urlImagen}}">
+          </ion-avatar>
+          <ion-label>{{c.nombre}}</ion-label>
+        </ion-item>
+
+        <ion-item-divider color="canasta">
+            <ion-label>
+              Opciones de usuario
+            </ion-label>
+          </ion-item-divider>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>

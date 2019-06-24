@@ -1,0 +1,22 @@
+[
+    {
+        "icon": "cart",
+        "name": "televisores",
+        "redirectTo":"/televisores"
+    },
+    {
+        "icon": "cart",
+        "name": "celulares",
+        "redirectTo":"/celulares"
+    },
+    {
+        "icon": "cart",
+        "name": "neveras",
+        "redirectTo":"/neveras"
+    },
+    {
+        "icon": "cart",
+        "name": "lavadoras",
+        "redirectTo":"/lavadoras"
+    }
+]
