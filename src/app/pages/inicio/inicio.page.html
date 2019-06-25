@@ -92,14 +92,14 @@
           </ion-card-header>
         
           <ion-card-content>
-              <ion-segment (ionChange)="segmentChanged($event)" color="dark">
+              <ion-segment color="dark">
                 
                   <ion-segment-button href="#dogs" value="agregar">
                     <ion-icon name="cart" color="primary"></ion-icon>
                     <ion-label>Agregar</ion-label>
                   </ion-segment-button>
 
-                  <ion-segment-button href="#cats" value="detalles">
+                  <ion-segment-button value="detalles" [routerLink]="['/','inicio', p.id_producto]">
                     <ion-icon name="eye" color="warning"></ion-icon>
                     <ion-label>Detalles</ion-label>
                   </ion-segment-button>

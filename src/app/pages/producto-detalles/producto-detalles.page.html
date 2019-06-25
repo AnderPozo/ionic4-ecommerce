@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="canasta">
+    <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{information?.nombre}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <img src="{{information?.urlImagen}}">
+      <ion-card-subtitle>{{information?.precio}}</ion-card-subtitle>
+      <ion-card-title>{{information?.nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="descripcion">
+      <p>{{information?.descripcion}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

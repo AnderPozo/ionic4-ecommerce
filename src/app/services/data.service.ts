@@ -7,6 +7,8 @@ import { Item, RespuestaTopHeadLines, RespuestaProductHeadLines } from '../inter
 })
 export class DataService {
 
+  urlDetalleProd = 'http://35.199.113.136/tienda-API/api/productos/api-productos.php';
+
   constructor(private http:HttpClient) { }
 
 
@@ -17,5 +19,11 @@ export class DataService {
   getProductos(){
     return this.http.get<RespuestaProductHeadLines>('http://35.199.113.136/tienda-API/api/productos/api-productos.php');
   }
+
+  getDetallesProd(id){
+    return this.http.get<RespuestaProductHeadLines>(`${this.urlDetalleProd}?producto=${id}`);
+  }
+
+
 
 }
