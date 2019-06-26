@@ -1,9 +1,48 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>productosCategoria</ion-title>
-  </ion-toolbar>
+    <ion-toolbar  color="canasta">
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/"></ion-back-button>
+        </ion-buttons>
+      <ion-title>Categoria</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+    <ion-row>
+        <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+                  *ngFor="let p of producto">
+    
+        <ion-card color="light">
+    
+            <ion-card-header>
+                <ion-card-subtitle>{{p.nombre}}</ion-card-subtitle>
+                <img src="{{p.urlImagen}}">
+                <ion-card-title>{{p.precio}} $</ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content>
+                  <ion-segment color="dark">
+                    
+                      <ion-segment-button href="#dogs" value="agregar">
+                        <ion-icon name="cart" color="primary"></ion-icon>
+                        <ion-label>Agregar</ion-label>
+                      </ion-segment-button>
+    
+                      <ion-segment-button value="detalles" [routerLink]="['/','inicio', p.id_producto]">
+                        <ion-icon name="eye" color="warning"></ion-icon>
+                        <ion-label>Detalles</ion-label>
+                      </ion-segment-button>
+    
+                      <ion-segment-button href="#cats" value="favorito">
+                          <ion-icon name="heart" color="danger"></ion-icon>
+                          <ion-label>Favorito</ion-label>
+                      </ion-segment-button>
+    
+                  </ion-segment>
+              </ion-card-content>
+        </ion-card>
+        </ion-col>
+      </ion-row>
 
 </ion-content>

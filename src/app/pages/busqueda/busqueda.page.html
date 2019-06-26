@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar  color="canasta">
+      <ion-buttons slot="start">
+          <ion-back-button text="" defaultHref="/"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Búsqueda de productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-searchbar placeholder="Ingrese nombre de producto" (ionChange)="onSearchChange($event)" ></ion-searchbar>
+
+<ion-item>
+  <ion-label>Seleccione una categoria</ion-label>
+    <ion-select  multiple="false" (ionChange)="onSearchChange($event)">
+      <div *ngFor="let c of componentes">
+      <ion-select-option value="{{c.nombre}}">{{c.nombre}}</ion-select-option>
+      </div>  
+    </ion-select>
+</ion-item>
+</ion-content>

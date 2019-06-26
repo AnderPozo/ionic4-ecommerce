@@ -24,6 +24,8 @@ export class DataService {
     return this.http.get<RespuestaProductHeadLines>(`${this.urlDetalleProd}?producto=${id}`);
   }
 
-
+  getProductosCategoria(nombre){
+    return this.http.get<RespuestaProductHeadLines>(`${this.urlDetalleProd}?categoria=${nombre}`);
+  }
 
 }

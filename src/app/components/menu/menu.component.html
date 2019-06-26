@@ -9,9 +9,9 @@
     <ion-content>
       <ion-list>
 
-        <ion-item>
+        <ion-item routerLink="/inicio" routerDirection="root">
                 <ion-icon slot="start" name="home" color="canasta"></ion-icon>
-                <ion-label>    Inicio</ion-label>
+                <ion-label >    Inicio</ion-label>
         </ion-item>
 
         <ion-item-divider color="canasta">
@@ -20,15 +20,16 @@
             </ion-label>
           </ion-item-divider>
 
-
-        <ion-item *ngFor="let c of componentes"
-                  routerLink="/productos-categoria"
-                  detail >
-          <ion-avatar slot="start">
-            <img src="{{c.urlImagen}}">
-          </ion-avatar>
-          <ion-label>{{c.nombre}}</ion-label>
-        </ion-item>
+        
+        <ion-menu-toggle *ngFor="let c of componentes">  
+          <ion-item [routerLink]="['/','productos-categoria', c.nombre]"
+                    detail >
+            <ion-avatar slot="start">
+              <img src="{{c.urlImagen}}">
+            </ion-avatar>
+            <ion-label>{{c.nombre}}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>  
 
         <ion-item-divider color="canasta">
             <ion-label>
