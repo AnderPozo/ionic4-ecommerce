@@ -1,11 +1,5 @@
 <ion-header>
   <ion-toolbar>
-
-    <!-- <ion-buttons slot="start">
-      <ion-button (click)="toggleMenu()">
-        <ion-icon slot="icon-only" name="menu"></ion-icon>
-      </ion-button>
-    </ion-buttons> -->
     <ion-buttons slot="start">
       <ion-menu-button color="canasta" menu="primerMenu">
       </ion-menu-button>
@@ -20,10 +14,10 @@
 
 
     <ion-buttons slot="end">
-        <ion-button routerLink="/busqueda" color="dark">
-            <ion-icon slot="icon-only" name="search"></ion-icon>
-          </ion-button>
-          
+      <ion-button routerLink="/busqueda" color="dark">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+
       <ion-button (click)="abrirCarrito()" color="canasta">
         <ion-icon slot="icon-only" name="basket"></ion-icon>
       </ion-button>
@@ -38,13 +32,13 @@
 <!--CONTENIDO-->
 
 <ion-content>
-  
+
   <ion-slides pager="true" class="slide-full">
 
     <ion-slide *ngFor="let slide of slides">
-     <ion-card mode="ios">
-       <img [src]="slide.img" style="height: 135px;">
-     </ion-card>
+      <ion-card mode="ios">
+        <img [src]="slide.img" style="height: 135px;">
+      </ion-card>
     </ion-slide>
   </ion-slides>
 
@@ -83,24 +77,24 @@
         </ion-card-content>
   </div> -->
 
-<ion-text class="texto1">
-  <h1>Novedades</h1>
-</ion-text>
+  <ion-text class="texto1">
+    <h1>Novedades</h1>
+  </ion-text>
 
-  <ion-row>
-    <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
-              *ngFor="let p of producto">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6" size-lg *ngFor="let p of producto">
 
-    <ion-card color="light">
+        <ion-card color="light">
 
-        <ion-card-header>
-            <ion-card-subtitle>{{p.nombre}}</ion-card-subtitle>
+          <ion-card-header>
+            <!-- <ion-card-subtitle>{{p.nombre}}</ion-card-subtitle> -->
             <img src="{{p.urlImagen}}">
             <ion-card-title>{{p.precio}} $</ion-card-title>
           </ion-card-header>
-        
+
           <ion-card-content>
-              <ion-segment color="dark">
+            <!-- <ion-segment color="dark">
                 
                   <ion-segment-button href="#dogs" value="agregar">
                     <ion-icon name="cart" color="primary"></ion-icon>
@@ -108,23 +102,40 @@
                   </ion-segment-button>
 
                   <ion-segment-button value="detalles" [routerLink]="['/','inicio', p.id_producto]">
-                    <ion-icon name="eye" color="warning"></ion-icon>
+                    <ion-icon name="eye" color="canasta"></ion-icon>
                     <ion-label>Detalles</ion-label>
                   </ion-segment-button>
-
-                  <ion-segment-button href="#cats" value="favorito">
-                      <ion-icon name="heart" color="danger"></ion-icon>
-                      <ion-label>Favorito</ion-label>
-                  </ion-segment-button>
-
-              </ion-segment>
+              </ion-segment> -->
+            <ion-buttons>
+              <ion-button color="canasta" [routerLink]="['/','inicio', p.id_producto]">
+                <ion-icon name="eye"></ion-icon>
+                Ver
+              </ion-button>
+            </ion-buttons>
+              <ion-buttons>
+                <ion-button color="primary">
+                  <ion-icon name="cart"></ion-icon>
+                  Agregar
+                </ion-button>
+              </ion-buttons>  
           </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-          
-    </ion-card>
-    </ion-col>
-  </ion-row>
+  <ion-text class="texto1">
+    <h1>Categorias</h1>
+  </ion-text>
 
-  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-lg *ngFor="let c of categorias">
+        <ion-card>
+          <img src="{{c.urlImagen}}">
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

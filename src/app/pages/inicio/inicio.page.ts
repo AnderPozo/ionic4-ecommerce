@@ -11,7 +11,8 @@ import { DataService } from 'src/app/services/data.service';
 export class InicioPage implements OnInit {
 
   producto: Product[] = [];
-  //prod: Product[]=[];
+
+  categorias: Item[] = [];
 
   slides: {img: string, titulo: string, desc:string}[] =[
     {
@@ -43,6 +44,11 @@ export class InicioPage implements OnInit {
     this.dataService.getProductos().subscribe(resp =>{
       console.log('productos',resp.items);
       this.producto.push(...resp.items);
+    });
+
+    this.dataService.getCategorias().subscribe(resp =>{
+      console.log('SeccionCategorias',resp.items);
+      this.categorias.push(...resp.items);
     });
 
   }
