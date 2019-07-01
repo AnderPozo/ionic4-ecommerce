@@ -1,0 +1,59 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content padding>
+
+  <!-- <img src="./assets/imgs/logo1.png" style="width: 70%; margin: auto; padding: 20px;"> -->
+  <br>
+  <br>
+  <ion-slides class="swiper-no-swiping">
+    <ion-slide>
+      <img fill="outline" src="http://35.199.113.136/tiendaEP/img/upec-creativa-ep-logo-1561080844.jpg">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-list>
+    <ion-item>
+      <ion-label floating>
+        Usuario:
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>
+        Contraseña:
+      </ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <br>
+  <br>
+
+  <ion-slides class="swiper-no-swiping">
+    <ion-slide>
+      <ion-button expand="full" fill="outline" shape="round" color="canasta" routerLink="/inicio">
+        Iniciar sesión
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+  <br>
+  <ion-slides class="swiper-no-swiping">
+    <ion-slide>
+      <ion-button expand="full" fill="outline" shape="round" color="canasta" routerLink="/registro">
+        Registrarse
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- <button ion-button block color="danger" (click)="login()">
+      Login
+    </button> -->
+
+  <!-- <button ion-button clear block color="danger">
+    No Account? Sign up Here
+  </button> -->
+
+</ion-content>

@@ -7,6 +7,10 @@ const routes: Routes = [
   { path: 'inicio/:id', loadChildren: './pages/producto-detalles/producto-detalles.module#ProductoDetallesPageModule' },
   { path: 'productos-categoria/:nombre', loadChildren: './pages/productos-categoria/productos-categoria.module#ProductosCategoriaPageModule' },
   { path: 'busqueda', loadChildren: './pages/busqueda/busqueda.module#BusquedaPageModule' },
+  { path: 'carrito', loadChildren: './pages/carrito/carrito.module#CarritoPageModule' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'registro', loadChildren: './pages/registro/registro.module#RegistroPageModule' },
+  { path: 'productos', loadChildren: './pages/productos/productos.module#ProductosPageModule' },
 ];
 
 @NgModule({

@@ -12,7 +12,9 @@ export class InicioPage implements OnInit {
 
   producto: Product[] = [];
 
-  categorias: Item[] = [];
+  televisores: Product[] = [];
+
+  telefonos: Product[] = [];
 
   slides: {img: string, titulo: string, desc:string}[] =[
     {
@@ -41,14 +43,20 @@ export class InicioPage implements OnInit {
 
   ngOnInit() {
 
+
     this.dataService.getProductos().subscribe(resp =>{
       console.log('productos',resp.items);
       this.producto.push(...resp.items);
     });
 
-    this.dataService.getCategorias().subscribe(resp =>{
-      console.log('SeccionCategorias',resp.items);
-      this.categorias.push(...resp.items);
+    this.dataService.getProductosCategoria('Televisores').subscribe(resp =>{
+      console.log('televisores',resp.items);
+      this.televisores.push(...resp.items);
+    });
+
+    this.dataService.getProductosCategoria('Telefonos').subscribe(resp =>{
+      console.log('telefonos',resp.items);
+      this.telefonos.push(...resp.items);
     });
 
   }

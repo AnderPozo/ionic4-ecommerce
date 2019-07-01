@@ -5,7 +5,7 @@
       </ion-menu-button>
     </ion-buttons>
 
-    <ion-slides [options]="swiperOpts">
+    <ion-slides [options]="swiperOpts" class="swiper-no-swiping">
       <ion-slide>
         <img fill="outline" src="http://35.199.113.136/tiendaEP/img/upec-creativa-ep-logo-1561080844.jpg"
           style="height: 65px;">
@@ -13,14 +13,17 @@
     </ion-slides>
 
 
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" padding>
       <ion-button routerLink="/busqueda" color="dark">
         <ion-icon slot="icon-only" name="search"></ion-icon>
       </ion-button>
 
-      <ion-button (click)="abrirCarrito()" color="canasta">
+      <ion-button routerLink="/carrito" color="canasta">
         <ion-icon slot="icon-only" name="basket"></ion-icon>
       </ion-button>
+      <span>
+        <h6 style="font-weight: bold; color: blue;">1</h6>
+      </span>
     </ion-buttons>
 
   </ion-toolbar>
@@ -42,41 +45,6 @@
     </ion-slide>
   </ion-slides>
 
-
-  <!--
-  <div *ngFor="let p of producto">
-      <ion-item-divider> 
-    <ion-list>
-        
-      <ion-list-header>{{p.nombre}}</ion-list-header>
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img src="{{p.urlImagen}}">
-        </ion-thumbnail>
-        <ion-label>
-          <p style="font-size: 11pt;">
-            {{p.precio}} $
-          </p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-item-divider>
-  </div>
-  -->
-
-  <!-- <div *ngFor="let p of producto">
-    i-ra
-      <ion-card-header>
-          <ion-card-subtitle>{{p.nombre}}</ion-card-subtitle>
-          <img src="{{p.urlImagen}}">
-          <ion-card-title>{{p.precio}}</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          
-        </ion-card-content>
-  </div> -->
-
   <ion-text class="texto1">
     <h1>Novedades</h1>
   </ion-text>
@@ -94,41 +62,111 @@
           </ion-card-header>
 
           <ion-card-content>
-            <!-- <ion-segment color="dark">
-                
-                  <ion-segment-button href="#dogs" value="agregar">
-                    <ion-icon name="cart" color="primary"></ion-icon>
-                    <ion-label>Agregar</ion-label>
-                  </ion-segment-button>
-
-                  <ion-segment-button value="detalles" [routerLink]="['/','inicio', p.id_producto]">
-                    <ion-icon name="eye" color="canasta"></ion-icon>
-                    <ion-label>Detalles</ion-label>
-                  </ion-segment-button>
-              </ion-segment> -->
             <ion-buttons>
               <ion-button color="canasta" [routerLink]="['/','inicio', p.id_producto]">
                 <ion-icon name="eye"></ion-icon>
                 Ver
               </ion-button>
             </ion-buttons>
-              <ion-buttons>
-                <ion-button color="primary">
-                  <ion-icon name="cart"></ion-icon>
-                  Agregar
-                </ion-button>
-              </ion-buttons>  
+            <ion-buttons>
+              <ion-button color="primary">
+                <ion-icon name="cart"></ion-icon>
+                Agregar
+              </ion-button>
+            </ion-buttons>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-text class="texto1">
-    <h1>Categorias</h1>
-  </ion-text>
+  <!-- <ion-button routerLink="/productos" class="ion-align-items-center">
+    <ion-icon slot="start" name="add"></ion-icon>
+    Todos los productos
+  </ion-button> -->
 
-  <ion-grid>
+
+  <ion-item-divider color="canasta" class="ion-align-items-center">
+    <ion-text class="texto1">
+      <h2>Televisores >>></h2>
+    </ion-text>
+  </ion-item-divider>
+
+  <ion-slides pager="true" class="slide-full">
+
+    <ion-slide *ngFor="let t of televisores">
+      <ion-card color="light">
+        <ion-card-header>
+          <ion-card-subtitle>{{t.nombre}}</ion-card-subtitle>
+          <img src="{{t.urlImagen}}">
+          <ion-card-title>{{t.precio}} $</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-buttons>
+            <ion-button color="canasta" [routerLink]="['/','inicio', t.id_producto]">
+              <ion-icon name="eye"></ion-icon>
+              Ver
+            </ion-button>
+          </ion-buttons>
+          <ion-buttons>
+            <ion-button color="primary">
+              <ion-icon name="cart"></ion-icon>
+              Agregar
+            </ion-button>
+          </ion-buttons>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+
+
+  <ion-item-divider color="canasta" class="ion-align-items-center">
+    <ion-text class="texto1">
+      <h2>Teléfonos >>></h2>
+    </ion-text>
+  </ion-item-divider>
+
+  <ion-slides pager="true" class="slide-full">
+    <ion-slide *ngFor="let te of telefonos">
+      <ion-card color="light">
+
+        <ion-card-header>
+          <ion-card-subtitle>{{te.nombre}}</ion-card-subtitle>
+          <img src="{{te.urlImagen}}">
+          <ion-card-title>{{te.precio}} $</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-buttons>
+            <ion-button color="canasta" [routerLink]="['/','inicio', te.id_producto]">
+              <ion-icon name="eye"></ion-icon>
+              Ver
+            </ion-button>
+          </ion-buttons>
+          <ion-buttons>
+            <ion-button color="primary">
+              <ion-icon name="cart"></ion-icon>
+              Agregar
+            </ion-button>
+          </ion-buttons>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+
+  <ion-slides class="swiper-no-swiping">
+    <ion-slide>
+      <ion-button expand="full" fill="outline" shape="round" color="canasta" routerLink="/productos">
+        Todos los productos
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+
+
+  <!-- <ion-grid>
     <ion-row>
       <ion-col size="6" size-lg *ngFor="let c of categorias">
         <ion-card>
@@ -136,6 +174,6 @@
         </ion-card>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 
 </ion-content>

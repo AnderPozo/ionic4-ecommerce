@@ -3,13 +3,13 @@
         <ion-buttons slot="start">
             <ion-back-button text="" defaultHref="/"></ion-back-button>
         </ion-buttons>
-      <ion-title>Productos</ion-title>
+      <ion-title>{{producto.categoria}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
-      <div *ngFor="let p of producto">
+      <ion-card *ngFor="let p of producto">
           <ion-list>
             <ion-item>          
               <ion-thumbnail slot="start">
@@ -35,6 +35,6 @@
               </ion-label>
             </ion-item>
           </ion-list>
-        </div>
+        </ion-card>
 
 </ion-content>
