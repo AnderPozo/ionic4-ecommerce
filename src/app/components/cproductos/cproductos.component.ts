@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-cproductos',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cproductos.component.scss'],
 })
 export class CproductosComponent implements OnInit {
+
+  @Input() productos: Product[] = [];
+  @Input() enFavoritos = false;
 
   constructor() { }
 
