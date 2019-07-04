@@ -15,31 +15,44 @@
     </ion-slide>
   </ion-slides>
 
-  <ion-list>
+  <form #formulario="ngForm">
     <ion-item>
       <ion-label floating>
-        Usuario:
+        Email:
       </ion-label>
-      <ion-input type="text" [(ngModel)]="username"></ion-input>
+      <ion-input type="text"
+                 name="usuario"  
+                 [(ngModel)]="logindata.usuario"
+                 required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>
         Contraseña:
       </ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password"
+                 name="password" 
+                 [(ngModel)]="logindata.password"
+                 required></ion-input>
     </ion-item>
-  </ion-list>
+  </form>
   <br>
   <br>
 
   <ion-slides class="swiper-no-swiping">
     <ion-slide>
-      <ion-button expand="full" fill="outline" shape="round" color="canasta" routerLink="/inicio">
+      <ion-button expand="full" 
+                  fill="outline" 
+                  shape="round" 
+                  color="canasta"
+                  type="submit" 
+                  (click)="login()">
         Iniciar sesión
       </ion-button>
     </ion-slide>
   </ion-slides>
   <br>
+
+  <!-- boton de registro -->
   <ion-slides class="swiper-no-swiping">
     <ion-slide>
       <ion-button expand="full" fill="outline" shape="round" color="canasta" routerLink="/registro">

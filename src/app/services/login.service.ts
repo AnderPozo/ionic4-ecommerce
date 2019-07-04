@@ -1,11 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Item, RespuestaTopHeadLines, RespuestaProductHeadLines } from '../interfaces/interfaces';
+import { AlertController, ToastController } from '@ionic/angular';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
+  constructor(public alertController: AlertController,
+    public toastController: ToastController) { }
+
+  async alertaInfomartiva(message: string) {
+    const alert = await this.alertController.create({
+      message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }
