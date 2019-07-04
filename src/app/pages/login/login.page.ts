@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Http } from '@angular/http';
 import { NavController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,9 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginPage implements OnInit {
 
   logindata: any = {};
+  
 
-  constructor(public navCtrl: NavController, public http: Http, private loginService: LoginService) {
+  constructor(public navCtrl: NavController, public http: Http, private loginService: LoginService,private storage: Storage) {
     this.logindata.usuario = "";
     this.logindata.password = "";
    }
@@ -26,7 +28,7 @@ export class LoginPage implements OnInit {
       console.log('usuario:', this.logindata.usuario);
       console.log('password:', this.logindata.password);
 
-      let url: string = 'http://localhost/PrestaShop-webservice-lib-master/login/login.php';
+      let url: string = 'http://35.199.113.136/prestashopWS/login/login.php';
 
       let dataPost = JSON.stringify({
         usuario: this.logindata.usuario,
@@ -39,10 +41,14 @@ export class LoginPage implements OnInit {
 
         if (data['_body'] == "true"){
           //console.log('Inicio de sesion exitoso');
+          this.loginService.guardarDatos(this.logindata.usuario);
           this.navCtrl.navigateRoot('/inicio', {animated: true});
+          this.loginService.presentToast('Bienvenido usuario');
         }else{
           //console.log('Error al iniciar sesión');
           this.loginService.alertaInfomartiva("Usuario y contraseña no son correctos");
+          this.logindata.usuario = null;
+          this.storage.clear();
         }
       });
 
@@ -50,5 +56,7 @@ export class LoginPage implements OnInit {
       console.log('Ingrese todos los datos');
     }
   }
+
+  
 
 }

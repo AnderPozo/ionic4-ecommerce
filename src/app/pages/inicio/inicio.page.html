@@ -53,10 +53,10 @@
     <ion-row>
       <ion-col size="6" size-lg *ngFor="let p of producto">
 
-        <ion-card color="light">
+        <ion-card color="light" [routerLink]="['/','inicio', p.id_producto]">
 
           <ion-card-header>
-            <!-- <ion-card-subtitle>{{p.nombre}}</ion-card-subtitle> -->
+            <ion-card-subtitle>{{p.nombre.substring(0,20)}}...</ion-card-subtitle>
             <img src="{{p.urlImagen}}">
             <ion-card-title>{{p.precio}} $</ion-card-title>
           </ion-card-header>

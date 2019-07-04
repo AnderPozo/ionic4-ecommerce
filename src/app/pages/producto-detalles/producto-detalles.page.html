@@ -16,7 +16,15 @@
       <ion-card-title>{{information?.nombre}}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="descripcion">
-      <p>{{information?.descripcion}}</p>
+      <p>{{information?.descripcion.substring(0,150)}}...</p>
     </ion-card-content>
+    <ion-button shape="round" expand="full" size="small" fill="outline" color="primary" (click)="agregarCarro()">
+      <ion-icon name="cart"></ion-icon>
+      Agregar al carrito
+    </ion-button>
+    <ion-button shape="round" expand="full" size="small" fill="outline" color="canasta" routerLink="/carrito">
+      <ion-icon name="eye"></ion-icon>
+      Ver carrito
+    </ion-button>
   </ion-card>
 </ion-content>

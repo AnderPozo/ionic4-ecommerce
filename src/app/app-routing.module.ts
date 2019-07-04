@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'registro', loadChildren: './pages/registro/registro.module#RegistroPageModule' },
   { path: 'productos', loadChildren: './pages/productos/productos.module#ProductosPageModule' },
+  { path: 'acerca', loadChildren: './pages/acerca/acerca.module#AcercaPageModule' },
 ];
 
 @NgModule({

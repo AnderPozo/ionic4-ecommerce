@@ -34,7 +34,7 @@ export class RegistroPage implements OnInit {
       console.log('correo:', this.logindata.correo);
       console.log('password:', this.logindata.password);
 
-      let url: string = 'http://localhost/PrestaShop-webservice-lib-master/examples/crearCliente.php';
+      let url: string = 'http://35.199.113.136/prestashopWS/metodos/crearUsuario.php';
 
       
       let dataPost = JSON.stringify({

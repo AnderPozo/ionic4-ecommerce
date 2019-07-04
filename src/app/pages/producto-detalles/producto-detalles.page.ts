@@ -24,4 +24,8 @@ export class ProductoDetallesPage implements OnInit {
     });
   }
 
+  agregarCarro(){
+    console.log('Producto agregado');
+  }
+
 }
