@@ -33,4 +33,6 @@ export class DataService {
     return this.http.get<RespuestaProductHeadLines>('http://35.199.113.136/tienda-API/api/productos/getProductos.php');
   }
 
+  
+
 }

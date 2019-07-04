@@ -6,7 +6,7 @@
   <br>
   <ion-slides class="swiper-no-swiping">
     <ion-slide>
-      <img fill="outline" src="../../../assets/img/av-4.png" style="height: 150px; width: 150px;">
+      <img fill="outline" src="../../../assets/img/logo_avatar.png" style="height: 150px; width: 150px;">
     </ion-slide>
   </ion-slides>
 
@@ -17,7 +17,8 @@
     <ion-item>
       <ion-label position="floating">Nombre:</ion-label>
       <ion-input type="text"
-                 name="nombres"           
+                 name="nombre"
+                 [(ngModel)]="logindata.nombre"           
                  required></ion-input>
     </ion-item>
 
@@ -25,6 +26,7 @@
       <ion-label position="floating">Apellidos:</ion-label>
       <ion-input type="text"
                  name="apellidos"
+                 [(ngModel)]="logindata.apellidos"
                  required></ion-input>
     </ion-item>
 
@@ -32,6 +34,7 @@
       <ion-label position="floating">Email:</ion-label>
       <ion-input type="email"
                  name="email"
+                 [(ngModel)]="logindata.correo"
                  required></ion-input>
     </ion-item>
 
@@ -39,6 +42,7 @@
       <ion-label position="floating">Contraseña:</ion-label>
       <ion-input type="password"
                  name="password"
+                 [(ngModel)]="logindata.password"
                  required></ion-input>
     </ion-item>
 
@@ -50,7 +54,7 @@
                     shape="round" 
                     color="canasta"
                     type="submit" 
-                    routerLink="/inicio">
+                    (click)="submit()">
           Crear cuenta
         </ion-button>
       </ion-slide>

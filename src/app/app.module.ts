@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 
 import { HttpClientModule} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,7 @@ import { HttpClientModule} from '@angular/common/http';
     IonicModule.forRoot(), 
     AppRoutingModule,
     ComponentsModule,
+    HttpModule,
     HttpClientModule
   ],
   providers: [
