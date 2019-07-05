@@ -34,8 +34,7 @@ export class LoginService {
       buttons: [
         {
           side: 'start',
-          icon: 'contact',
-          text: 'Hola',
+          icon: 'contact'
         }
       ]
     });

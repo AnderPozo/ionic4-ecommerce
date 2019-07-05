@@ -16,9 +16,9 @@ export interface RespuestaProductHeadLines {
   }
 
 export interface Product {
-    id_producto: string;
-    precio: string;
-    nombre: string,
-    urlImagen: string;
-    descripcion: string;
+    id_producto?: number;
+    precio?: string;
+    nombre?: string,
+    urlImagen?: string;
+    descripcion?: string;
 }

@@ -25,8 +25,8 @@ export class LoginPage implements OnInit {
 
   login(){
     if ( this.logindata.usuario !="" && this.logindata.password !=""){
-      console.log('usuario:', this.logindata.usuario);
-      console.log('password:', this.logindata.password);
+      // console.log('usuario:', this.logindata.usuario);
+      // console.log('password:', this.logindata.password);
 
       let url: string = 'http://35.199.113.136/prestashopWS/login/login.php';
 

@@ -22,7 +22,7 @@ export class DataService {
     return this.http.get<RespuestaProductHeadLines>('http://35.199.113.136/tienda-API/api/productos/api-productos.php');
   }
 
-  getDetallesProd(id){
+  getDetallesProd(id: string){
     return this.http.get<Product>(`${this.urlDetalleProd}?producto=${id}`);
   }
 

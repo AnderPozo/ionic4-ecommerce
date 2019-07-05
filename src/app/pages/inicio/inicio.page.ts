@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { Item, Product } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data.service';
-import { CarrritoService } from 'src/app/services/carrrito.service';
+import { DetalleComponent } from 'src/app/components/detalle/detalle.component';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-inicio',
@@ -45,7 +46,10 @@ export class InicioPage implements OnInit {
     }
   ]
 
-  constructor(private menuCtrl: MenuController, private dataService: DataService,private carritoService: CarrritoService) { }
+  constructor(private menuCtrl: MenuController, 
+              private dataService: DataService,
+              private modalCtrl: ModalController,
+              private storage: Storage) { }
 
   ngOnInit() {
 
@@ -69,6 +73,16 @@ export class InicioPage implements OnInit {
 
   toggleMenu(){
     this.menuCtrl.toggle();
+  }
+
+  async verDetalle(id: string){
+    const modal = await this.modalCtrl.create({
+      component: DetalleComponent,
+      componentProps:{
+        id
+      }
+    });
+    modal.present();
   }
 
 }

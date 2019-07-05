@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar color="canasta">
+      <ion-title>{{producto.nombre}}</ion-title>
+      <ion-buttons slot="start">
+          <ion-button (click)="cerrarModal()">
+          <ion-icon slot="start" name="arrow-round-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <img src="{{producto.urlImagen}}">
+        <ion-card-subtitle>{{producto.precio}}</ion-card-subtitle>
+        <ion-card-title>{{producto.nombre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="descripcion">
+        <p>{{producto.descripcion | slice: 0: oculto}}...</p>
+        <ion-label color="primary"
+                   (click)=" oculto = 5000"
+                   *ngIf="oculto !== 5000">Leer más</ion-label>
+      </ion-card-content>
+
+      <ion-button shape="round" expand="full" size="small" fill="outline" color="primary" (click)="agregarCarro()">
+        <ion-icon name="cart"></ion-icon>
+        Agregar al carrito
+      </ion-button>
+      
+      <ion-button shape="round" expand="full" size="small" fill="outline" color="canasta" routerLink="/carrito">
+        <ion-icon name="eye"></ion-icon>
+        Ver carrito
+      </ion-button>
+    </ion-card>
+  </ion-content>

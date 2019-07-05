@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Http } from '@angular/http';
 import { NavController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
+import { Storage } from '@ionic/storage';
 // import 'rxjs/Rx';
 // import 'rxjs/operator/map';
 
@@ -15,7 +16,7 @@ export class RegistroPage implements OnInit {
 
   logindata: any = {};
 
-  constructor( public navCtrl: NavController, public http: Http, private loginService: LoginService) {
+  constructor( public navCtrl: NavController, public http: Http, private loginService: LoginService,private storage: Storage) {
     this.logindata.nombre = "";
     this.logindata.apellidos = "";
     this.logindata.correo = "";
@@ -29,10 +30,10 @@ export class RegistroPage implements OnInit {
     if (this.logindata.nombre != "" && this.logindata.apellidos != "" &&
       this.logindata.correo != "" && this.logindata.password != "") {
 
-      console.log('nombre:', this.logindata.nombre);
-      console.log('apellido:', this.logindata.apellidos);
-      console.log('correo:', this.logindata.correo);
-      console.log('password:', this.logindata.password);
+      // console.log('nombre:', this.logindata.nombre);
+      // console.log('apellido:', this.logindata.apellidos);
+      // console.log('correo:', this.logindata.correo);
+      // console.log('password:', this.logindata.password);
 
       let url: string = 'http://35.199.113.136/prestashopWS/metodos/crearUsuario.php';
 
@@ -49,15 +50,20 @@ export class RegistroPage implements OnInit {
         console.log(data);
 
         if (data['ok']){
+
           console.log('Usuario creado satisfactoriamente');
           this.loginService.alertaInfomartiva("Usuario creado correctamente");
+          this.loginService.guardarDatos(this.logindata.correo);
           this.navCtrl.navigateRoot('/inicio', {animated: true});
+
         }else{
           this.loginService.alertaInfomartiva("Upss...Algo salió mal");
+          this.logindata.correo = null;
+          this.storage.clear();
         }
       });
     }else{
-      console.log('Ingrese password');
+      console.log('Algo ha ido mal');
     }
   }
 
