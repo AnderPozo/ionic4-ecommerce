@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { Product } from 'src/app/interfaces/interfaces';
+import { CarrritoService } from 'src/app/services/carrrito.service';
 
 @Component({
   selector: 'app-producto-detalles',
@@ -10,22 +11,27 @@ import { Product } from 'src/app/interfaces/interfaces';
 })
 export class ProductoDetallesPage implements OnInit {
 
-  //producto: Product[] = [];
+  producto: Product[] = [];
 
-  information = null;
-  constructor(private activatedRoute: ActivatedRoute, private dataService:DataService) { }
+  oculto = 150;
+
+  information:Product = <Product>{};
+
+  constructor(private activatedRoute: ActivatedRoute, 
+              private dataService:DataService,
+              private carritoService: CarrritoService) { }
 
   ngOnInit() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.dataService.getDetallesProd(id).subscribe(result =>{
-      console.log('detalles: ',result);
+      // console.log('detalles: ',result);
       this.information = result;
     });
   }
 
   agregarCarro(){
-    console.log('Producto agregado');
+    this.carritoService.agregarProducto(this.information); 
   }
 
 }

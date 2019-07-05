@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Item, Product } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data.service';
+import { CarrritoService } from 'src/app/services/carrrito.service';
 
 @Component({
   selector: 'app-inicio',
@@ -15,6 +16,11 @@ export class InicioPage implements OnInit {
   televisores: Product[] = [];
 
   telefonos: Product[] = [];
+
+  slideOpts ={
+    slidesPerView: 1.7,
+    freeMode:true
+  };
 
   slides: {img: string, titulo: string, desc:string}[] =[
     {
@@ -39,7 +45,7 @@ export class InicioPage implements OnInit {
     }
   ]
 
-  constructor(private menuCtrl: MenuController, private dataService: DataService) { }
+  constructor(private menuCtrl: MenuController, private dataService: DataService,private carritoService: CarrritoService) { }
 
   ngOnInit() {
 

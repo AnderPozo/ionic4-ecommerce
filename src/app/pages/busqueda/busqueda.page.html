@@ -1,21 +1,72 @@
 <ion-header>
-  <ion-toolbar  color="canasta">
-      <ion-buttons slot="start">
-          <ion-back-button text="" defaultHref="/"></ion-back-button>
-      </ion-buttons>
+  <ion-toolbar color="canasta">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>Búsqueda de productos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-searchbar placeholder="Ingrese nombre de producto" (ionChange)="onSearchChange($event)" ></ion-searchbar>
 
-<ion-item>
-  <ion-label>Seleccione una categoria</ion-label>
-    <ion-select  multiple="false" (ionChange)="onSearchChange($event)">
-      <div *ngFor="let c of componentes">
-      <ion-select-option value="{{c.nombre}}">{{c.nombre}}</ion-select-option>
-      </div>  
-    </ion-select>
-</ion-item>
+  <ion-searchbar placeholder="Ingrese nombre de producto"  debounce="900" animated [value]="textoBuscar"
+    (ionChange)="buscar($event)">
+  </ion-searchbar>
+
+
+  <ion-grid *ngIf="buscando">
+    <ion-row>
+      <ion-col text-center>
+        <ion-spinner name="crescent"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list *ngIf="articulos.length === 0">
+    <ion-list-header>
+      <ion-label style="font-weight: bold">Sugerencias</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let idea of ideas" (click)="textoBuscar = idea">
+      <ion-label color="primary">{{idea}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngFor="let art of articulos">
+      <ion-list>
+        <ion-item>          
+          <ion-thumbnail slot="start">
+              <img src="{{art.urlImagen}}" style="height: 85px; width: 60px;">
+            </ion-thumbnail>
+          <ion-label text-wrap>
+            <h3 style="font-weight: bold;">
+              {{ art.nombre}}
+            </h3>
+            <h4 style="padding-top: 12px;">
+              {{ art.precio }} $
+            </h4>
+            <p>
+              <ion-buttons slot="start">
+                <ion-button (click)="onClick()" color="primary">
+                  <ion-icon slot="start" name="cart"></ion-icon>
+                </ion-button>
+                <ion-button color="canasta" [routerLink]="['/','inicio', art.id_producto]">
+                  <ion-icon slot="start" name="eye"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+
+
+  <!-- <ion-item>
+                    <ion-label>Seleccione una categoria</ion-label>
+                      <ion-select  multiple="false" (ionChange)="onSearchChange($event)">
+                        <div *ngFor="let p of productos">
+                        <ion-select-option value="{{p.nombre}}">{{c.nombre}}</ion-select-option>
+                        </div>  
+                      </ion-select>
+                  </ion-item> -->
 </ion-content>

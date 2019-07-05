@@ -102,12 +102,12 @@
     </ion-text>
   </ion-item-divider>
 
-  <ion-slides pager="true" class="slide-full">
+  <ion-slides pager="true" class="slide-full" [options]="slideOpts">
 
     <ion-slide *ngFor="let t of televisores">
       <ion-card color="light">
         <ion-card-header>
-          <ion-card-subtitle>{{t.nombre}}</ion-card-subtitle>
+          <ion-card-subtitle>{{t.nombre.substring(0,20)}}...</ion-card-subtitle>
           <img src="{{t.urlImagen}}">
           <ion-card-title>{{t.precio}} $</ion-card-title>
         </ion-card-header>
@@ -138,12 +138,12 @@
     </ion-text>
   </ion-item-divider>
 
-  <ion-slides pager="true" class="slide-full">
+  <ion-slides pager="true" class="slide-full" [options]="slideOpts">
     <ion-slide *ngFor="let te of telefonos">
       <ion-card color="light">
 
         <ion-card-header>
-          <ion-card-subtitle>{{te.nombre}}</ion-card-subtitle>
+          <ion-card-subtitle>{{te.nombre.substring(0,20)}}...</ion-card-subtitle>
           <img src="{{te.urlImagen}}">
           <ion-card-title>{{te.precio}} $</ion-card-title>
         </ion-card-header>
@@ -156,7 +156,7 @@
             </ion-button>
           </ion-buttons>
           <ion-buttons>
-            <ion-button color="primary">
+            <ion-button color="primary" (click)="agregarCarro()">
               <ion-icon name="cart"></ion-icon>
               Agregar
             </ion-button>
@@ -167,13 +167,13 @@
   </ion-slides>
 
 
-  <ion-slides class="swiper-no-swiping">
+  <!-- <ion-slides class="swiper-no-swiping">
     <ion-slide>
       <ion-button expand="full" fill="outline" shape="round" color="canasta" routerLink="/productos">
         Todos los productos
       </ion-button>
     </ion-slide>
-  </ion-slides>
+  </ion-slides> -->
 
 
   <!-- <ion-grid>
