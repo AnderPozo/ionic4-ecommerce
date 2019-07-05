@@ -53,7 +53,7 @@ export class LoginPage implements OnInit {
       });
 
     }else{
-      console.log('Ingrese todos los datos');
+      this.loginService.alertaInfomartiva('Por favor ingrese todos los campos');
     }
   }
 

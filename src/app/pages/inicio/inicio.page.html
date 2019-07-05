@@ -68,12 +68,12 @@
                 Ver
               </ion-button>
             </ion-buttons>
-            <ion-buttons>
+            <!-- <ion-buttons>
               <ion-button color="primary">
                 <ion-icon name="cart"></ion-icon>
                 Agregar
               </ion-button>
-            </ion-buttons>
+            </ion-buttons> -->
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -105,7 +105,7 @@
   <ion-slides pager="true" class="slide-full" [options]="slideOpts">
 
     <ion-slide *ngFor="let t of televisores">
-      <ion-card color="light">
+      <ion-card color="light" (click)="verDetalle( t.id_producto)">
         <ion-card-header>
           <ion-card-subtitle>{{t.nombre.substring(0,20)}}...</ion-card-subtitle>
           <img src="{{t.urlImagen}}">
@@ -113,18 +113,18 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-buttons>
+          <!-- <ion-buttons>
             <ion-button color="canasta" (click)="verDetalle( t.id_producto)">
               <ion-icon name="eye"></ion-icon>
               Ver
             </ion-button>
-          </ion-buttons>
-          <ion-buttons>
+          </ion-buttons> -->
+          <!-- <ion-buttons>
             <ion-button color="primary">
               <ion-icon name="cart"></ion-icon>
               Agregar
             </ion-button>
-          </ion-buttons>
+          </ion-buttons> -->
         </ion-card-content>
       </ion-card>
     </ion-slide>
@@ -140,7 +140,7 @@
 
   <ion-slides pager="true" class="slide-full" [options]="slideOpts">
     <ion-slide *ngFor="let te of telefonos">
-      <ion-card color="light">
+      <ion-card color="light" (click)="verDetalle( te.id_producto)">
 
         <ion-card-header>
           <ion-card-subtitle>{{te.nombre.substring(0,20)}}...</ion-card-subtitle>
@@ -149,18 +149,18 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-buttons>
+          <!-- <ion-buttons>
             <ion-button color="canasta" (click)="verDetalle( te.id_producto)">
               <ion-icon name="eye"></ion-icon>
               Ver
             </ion-button>
-          </ion-buttons>
-          <ion-buttons>
+          </ion-buttons> -->
+          <!-- <ion-buttons>
             <ion-button color="primary" (click)="agregarCarro()">
               <ion-icon name="cart"></ion-icon>
               Agregar
             </ion-button>
-          </ion-buttons>
+          </ion-buttons> -->
         </ion-card-content>
       </ion-card>
     </ion-slide>

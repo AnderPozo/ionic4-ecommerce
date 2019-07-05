@@ -55,17 +55,17 @@ export class InicioPage implements OnInit {
 
 
     this.dataService.getProductos().subscribe(resp =>{
-      console.log('productos',resp.items);
+      //console.log('productos',resp.items);
       this.producto.push(...resp.items);
     });
 
     this.dataService.getProductosCategoria('Televisores').subscribe(resp =>{
-      console.log('televisores',resp.items);
+      //console.log('televisores',resp.items);
       this.televisores.push(...resp.items);
     });
 
     this.dataService.getProductosCategoria('Telefonos').subscribe(resp =>{
-      console.log('telefonos',resp.items);
+      //console.log('telefonos',resp.items);
       this.telefonos.push(...resp.items);
     });
 

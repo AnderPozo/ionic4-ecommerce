@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Item, Product } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data.service';
 import { EventEmitter } from 'events';
+import { ModalController } from '@ionic/angular';
+import { DetalleComponent } from 'src/app/components/detalle/detalle.component';
 
 @Component({
   selector: 'app-busqueda',
@@ -18,7 +20,8 @@ export class BusquedaPage implements OnInit {
 
   ideas: string[] =['Cocina','Laptop', 'Celular','Samsung Galaxy','Xiaomi','Sony TV','Televisor'];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+              private modalCtrl:ModalController) { }
 
   ngOnInit() {
     // this.dataService.getProductos().subscribe(resp =>{
@@ -44,6 +47,16 @@ export class BusquedaPage implements OnInit {
         this.buscando = false;
 
       });
+  }
+
+  async verDetalle(id: string){
+    const modal = await this.modalCtrl.create({
+      component: DetalleComponent,
+      componentProps:{
+        id
+      }
+    });
+    modal.present();
   }
 
 }

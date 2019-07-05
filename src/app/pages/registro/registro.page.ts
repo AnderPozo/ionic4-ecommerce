@@ -63,7 +63,8 @@ export class RegistroPage implements OnInit {
         }
       });
     }else{
-      console.log('Algo ha ido mal');
+      //console.log('Algo ha ido mal');
+      this.loginService.alertaInfomartiva('Por favor ingrese todos los campos');
     }
   }
 

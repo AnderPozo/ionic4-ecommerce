@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { identifierModuleUrl } from '@angular/compiler';
 import { DataService } from 'src/app/services/data.service';
 import { Product } from 'src/app/interfaces/interfaces';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { CarrritoService } from 'src/app/services/carrrito.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class DetalleComponent implements OnInit {
 
   constructor( private dataService: DataService,
                private modalCtrl: ModalController,
-               private carritoService: CarrritoService) { }
+               private carritoService: CarrritoService,
+               private navCtrl:NavController) { }
 
   async ngOnInit() {
     // console.log('ID', this.id);
@@ -40,6 +41,11 @@ export class DetalleComponent implements OnInit {
 
   agregarCarro(){
     this.carritoService.agregarProducto(this.producto);
+  }
+
+  verCarrito(){
+    this.modalCtrl.dismiss();
+    this.navCtrl.navigateRoot('/carrito', {animated: true});
   }
 
 }

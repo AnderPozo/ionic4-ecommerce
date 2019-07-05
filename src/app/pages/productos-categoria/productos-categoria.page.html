@@ -27,7 +27,7 @@
                     <ion-button (click)="onClick()" color="primary">
                       <ion-icon slot="start" name="cart"></ion-icon>
                     </ion-button>
-                    <ion-button color="canasta" [routerLink]="['/','inicio', p.id_producto]">
+                    <ion-button color="canasta" (click)="verDetalle( p.id_producto)">
                       <ion-icon slot="start" name="eye"></ion-icon>
                     </ion-button>
                   </ion-buttons>
