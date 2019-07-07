@@ -10,6 +10,11 @@ export class CarrritoService {
 
   productos: Product[] =[];
 
+  total: any;
+
+  mensajeCarrito: boolean = false;
+
+
   constructor(private storage: Storage,
               private toastCtrl: ToastController) {
                 this.cargarProductos();
@@ -37,8 +42,8 @@ export class CarrritoService {
     }
 
     if (existe){
-      this.productos = this. productos.filter( prod => prod.id_producto !== producto.id_producto);
-      mensaje = 'Removido del carrito';
+      //this.productos = this. productos.filter( prod => prod.id_producto !== producto.id_producto);
+      mensaje = 'El producto ya ha sido agregado';
     }else{
       this.productos.push(producto);
       mensaje = 'Agregada al carrito';
@@ -70,5 +75,55 @@ export class CarrritoService {
     return (existe) ? true : false;
   }
 
+
+
+  async obtenerTotal(){
+
+    let precio = 0;
+    this.total = 0.0;
+
+    const productos = await this.cargarProductos();
+
+    for ( const prod of productos){
+
+      var reemplazo = prod.precio.replace(/,/g, '');
+
+      precio = parseFloat(reemplazo);
+
+      this.total = this.total+ precio;
+    }
+
+
+    return this.total;
+  }
+
+
+
+  eliminarProducto(producto: Product){
+
+    let existe = false;
+    let mensaje ='';
+
+    for ( const prod of this.productos){
+      if (prod.id_producto === producto.id_producto){
+        
+        this.productos = this. productos.filter( prod => prod.id_producto !== producto.id_producto);
+        mensaje = 'Producto eliminado';
+      }
+    }
+
+    // if (existe){
+    // }else{
+    //   this.productos.push(producto);
+    //   mensaje = 'Agregada al carrito';
+    // }
+
+    // return !existe;
+
+
+    // this.presentToast(mensaje);
+    // this.storage.set('productos', this.productos);
+  }
+  
 
 }

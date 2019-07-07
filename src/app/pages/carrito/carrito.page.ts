@@ -14,6 +14,10 @@ export class CarritoPage implements OnInit {
 
   productos: Product[] = [];
 
+  produc: Product[]=[];
+
+  total : any;
+
 
   constructor(private carritoService: CarrritoService, private payPal: PayPal) { }
 
@@ -23,7 +27,17 @@ export class CarritoPage implements OnInit {
 
   async ngOnInit() {
     this.productos = await this.carritoService.cargarProductos();
+    this.total = this.obtenerTotal();   
   }
+
+  async obtenerTotal(){
+    this.total = 0.0;
+
+    this.total = await this.carritoService.obtenerTotal();
+    console.log(this.total);
+  }
+
+
 
   payWithPaypal() {
     console.log("Pay ????");
@@ -75,5 +89,11 @@ export class CarritoPage implements OnInit {
 
 
 
+
+  borrarProducto(produc: Product){
+    this.carritoService.eliminarProducto(produc);
+    // this.carritoService.cargarProductos();
+    console.log(produc);
+  }
 
 }
