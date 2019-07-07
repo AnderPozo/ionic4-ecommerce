@@ -14,6 +14,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { PayPal} from '@ionic-native/paypal/ngx';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    PayPal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

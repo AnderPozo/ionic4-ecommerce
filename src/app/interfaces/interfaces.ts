@@ -21,4 +21,5 @@ export interface Product {
     nombre?: string,
     urlImagen?: string;
     descripcion?: string;
+    proveedor?:string
 }
