@@ -5,7 +5,7 @@
       </ion-menu-button>
     </ion-buttons>
 
-    <ion-slides [options]="swiperOpts" class="swiper-no-swiping">
+    <ion-slides class="swiper-no-swiping">
       <ion-slide>
         <img fill="outline" src="http://35.199.113.136/tiendaEP/img/upec-creativa-ep-logo-1561080844.jpg"
           style="height: 65px;">
@@ -53,25 +53,21 @@
     <ion-row>
       <ion-col size="6" size-lg *ngFor="let p of producto">
 
-        <ion-card color="light">
+        <ion-card color="light" (click)="verDetalle( p.id_producto)">
 
           <ion-card-header>
             <ion-card-subtitle>{{p.nombre.substring(0,20)}}...</ion-card-subtitle>
             <img src="{{p.urlImagen}}">
-            <ion-card-title>{{p.precio}} $</ion-card-title>
+            <ion-card-title >
+              <h2 class="textoPrecio">{{p.precio}} $ </h2>
+            </ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            <ion-buttons>
+            <!-- <ion-buttons>
               <ion-button color="canasta" (click)="verDetalle( p.id_producto)">
                 <ion-icon name="eye"></ion-icon>
                 Ver
-              </ion-button>
-            </ion-buttons>
-            <!-- <ion-buttons>
-              <ion-button color="primary">
-                <ion-icon name="cart"></ion-icon>
-                Agregar
               </ion-button>
             </ion-buttons> -->
           </ion-card-content>
@@ -80,7 +76,7 @@
     </ion-row>
   </ion-grid>
 
-  <br>
+  <!-- <br>
   <ion-slides class="swiper-no-swiping">
     <ion-slide>
       <ion-button expand="full" fill="outline" shape="round" color="primary" routerLink="/productos">
@@ -88,7 +84,7 @@
       </ion-button>
     </ion-slide>
   </ion-slides>
-  <br>
+  <br> -->
 
   <!-- <ion-button routerLink="/productos" class="ion-align-items-center">
     <ion-icon slot="start" name="add"></ion-icon>

@@ -11,7 +11,7 @@
   
       <ion-card *ngFor="let p of producto">
           <ion-list>
-            <ion-item>          
+            <ion-item (click)="verDetalle( p.id_producto)">          
               <ion-thumbnail slot="start">
                   <img src="{{p.urlImagen}}" style="height: 85px; width: 60px;">
                 </ion-thumbnail>
@@ -22,7 +22,7 @@
                 <h4 style="padding-top: 12px;">
                   {{ p.precio }} $
                 </h4>
-                <p>
+                <!-- <p>
                   <ion-buttons slot="start">
                     <ion-button (click)="onClick()" color="primary">
                       <ion-icon slot="start" name="cart"></ion-icon>
@@ -31,7 +31,7 @@
                       <ion-icon slot="start" name="eye"></ion-icon>
                     </ion-button>
                   </ion-buttons>
-                </p>
+                </p> -->
               </ion-label>
             </ion-item>
           </ion-list>

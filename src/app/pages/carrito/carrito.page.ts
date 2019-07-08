@@ -3,6 +3,7 @@ import { NavController, IonList } from '@ionic/angular';
 import { Product } from 'src/app/interfaces/interfaces';
 import { CarrritoService } from 'src/app/services/carrrito.service';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -18,7 +19,10 @@ export class CarritoPage implements OnInit {
 
   total : any;
 
-  constructor(private carritoService: CarrritoService, private payPal: PayPal, private navCtrl:NavController) { }
+  constructor(private carritoService: CarrritoService, 
+              private payPal: PayPal, 
+              private navCtrl:NavController,
+              private toastCtrl: LoginService) { }
 
   paymentAmount: string = '3.33';
   currency: string = 'USD';
@@ -43,10 +47,12 @@ export class CarritoPage implements OnInit {
 
 
   payWithPaypal() {
+
     console.log(this.total);
+
     this.payPal.init({
-      PayPalEnvironmentProduction: 'AVPGvRV-zPfLLWdrWBCJVno4JmGpqW_cyblOdjECS6HX2H-5YsQgYuBLcFTlt1LJCqr8VsjCNTYO4Yvf',
-      PayPalEnvironmentSandbox: 'AfFAkGRq_ErwEXN5GsqgpHZkBpSpK4qlYTfgVChQoMQWvjwos1dgIV_8_ffBDiQN6asokS2NZrbPkJXR'
+      PayPalEnvironmentProduction: 'ARSJqTmt_wPKqazZDUsH_Ut3W1AwzDBfMPJYXQtwgrNZA0jnMahTvRD79PWz3w8K8n1EvPiPVwU1JuI6',
+      PayPalEnvironmentSandbox: 'AWYcIiKgeIXys5TMcAahlT7edplZBNcQiA8gN1YpKf2_eP60nElvxEuB6GsXrxbvMV3ogFcWPt01kRtD'
     }).then(() => {
       // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
       this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
@@ -54,39 +60,25 @@ export class CarritoPage implements OnInit {
         //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
         acceptCreditCards: true,
         languageOrLocale: 'ec-EC',
-        merchantName:'Televisor Samsung',
-        defaultUserEmail: 'testpaypal@gmail.com'
+        merchantName:'Articulos canasta-fronteriza'
       })).then(() => {
-        let payment = new PayPalPayment(this.paymentAmount, this.currency, 'Televisor SONY', 'sale');
+        let payment = new PayPalPayment(this.total, this.currency, 'Factura Canasta transfronteriza', 'sale');
         this.payPal.renderSinglePaymentUI(payment).then((res) => {
-          console.log('Pago efectuado:',res);
-          // Successfully paid
-
-          // Example sandbox response
-          //
-          // {
-          //   "client": {
-          //     "environment": "sandbox",
-          //     "product_name": "PayPal iOS SDK",
-          //     "paypal_sdk_version": "2.16.0",
-          //     "platform": "iOS"
-          //   },
-          //   "response_type": "payment",
-          //   "response": {
-          //     "id": "PAY-1AB23456CD789012EF34GHIJ",
-          //     "state": "approved",
-          //     "create_time": "2016-10-03T13:33:33Z",
-          //     "intent": "sale"
-          //   }
-          // }
+          // console.log('Pago efectuado:',res);
+          this.toastCtrl.alertaInfomartiva('Transferencia exitosa');
+          
         }, () => {
           // Error or render dialog closed without being successful
+          this.toastCtrl.alertaInfomartiva('Error al cargar el pago');
+
         });
       }, () => {
         // Error in configuration
+        this.toastCtrl.alertaInfomartiva('Error al configurar el pago');
       });
     }, () => {
       // Error in initialization, maybe PayPal isn't supported or something else
+      this.toastCtrl.alertaInfomartiva('No se pudo iniciar el pago');
     });
   }
 

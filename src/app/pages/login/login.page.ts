@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
           //console.log('Inicio de sesion exitoso');
           this.loginService.guardarDatos(this.logindata.usuario);
           this.navCtrl.navigateRoot('/inicio', {animated: true});
-          this.loginService.presentToast('Bienvenido usuario');
+          this.loginService.presentToast('Bienvenido');
         }else{
           //console.log('Error al iniciar sesión');
           this.loginService.alertaInfomartiva("Usuario y contraseña no son correctos");
