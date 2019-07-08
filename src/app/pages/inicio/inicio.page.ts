@@ -4,6 +4,7 @@ import { Item, Product } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/services/data.service';
 import { DetalleComponent } from 'src/app/components/detalle/detalle.component';
 import { Storage } from '@ionic/storage';
+import { CarrritoService } from 'src/app/services/carrrito.service';
 
 @Component({
   selector: 'app-inicio',
@@ -17,6 +18,8 @@ export class InicioPage implements OnInit {
   televisores: Product[] = [];
 
   telefonos: Product[] = [];
+
+  // contador : any;
 
   slideOpts ={
     slidesPerView: 1.7,
@@ -49,7 +52,8 @@ export class InicioPage implements OnInit {
   constructor(private menuCtrl: MenuController, 
               private dataService: DataService,
               private modalCtrl: ModalController,
-              private storage: Storage) { }
+              private storage: Storage,
+              private carritoService:CarrritoService) { }
 
   ngOnInit() {
 
@@ -69,6 +73,8 @@ export class InicioPage implements OnInit {
       this.telefonos.push(...resp.items);
     });
 
+    // this.contador = this.numeroProductos();
+
   }
 
   toggleMenu(){
@@ -84,5 +90,11 @@ export class InicioPage implements OnInit {
     });
     modal.present();
   }
+
+  // async numeroProductos(){ 
+  //   this.contador = 0;
+  //   this.contador = await this.carritoService.numeroProductos();
+  //   console.log(this.contador);
+  // }
 
 }

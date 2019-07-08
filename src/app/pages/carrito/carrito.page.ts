@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavController, IonList } from '@ionic/angular';
 import { Product } from 'src/app/interfaces/interfaces';
 import { CarrritoService } from 'src/app/services/carrrito.service';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
@@ -12,14 +12,13 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
 })
 export class CarritoPage implements OnInit {
 
-  productos: Product[] = [];
+  @ViewChild('lista') lista: IonList;
 
-  produc: Product[]=[];
+  productos: Product[] = [];
 
   total : any;
 
-
-  constructor(private carritoService: CarrritoService, private payPal: PayPal) { }
+  constructor(private carritoService: CarrritoService, private payPal: PayPal, private navCtrl:NavController) { }
 
   paymentAmount: string = '3.33';
   currency: string = 'USD';
@@ -27,20 +26,24 @@ export class CarritoPage implements OnInit {
 
   async ngOnInit() {
     this.productos = await this.carritoService.cargarProductos();
-    this.total = this.obtenerTotal();   
+    this.total = this.obtenerTotal();
+
   }
 
   async obtenerTotal(){
+
     this.total = 0.0;
 
     this.total = await this.carritoService.obtenerTotal();
+
     console.log(this.total);
+
   }
 
 
 
   payWithPaypal() {
-    console.log("Pay ????");
+    console.log(this.total);
     this.payPal.init({
       PayPalEnvironmentProduction: 'AVPGvRV-zPfLLWdrWBCJVno4JmGpqW_cyblOdjECS6HX2H-5YsQgYuBLcFTlt1LJCqr8VsjCNTYO4Yvf',
       PayPalEnvironmentSandbox: 'AfFAkGRq_ErwEXN5GsqgpHZkBpSpK4qlYTfgVChQoMQWvjwos1dgIV_8_ffBDiQN6asokS2NZrbPkJXR'
@@ -90,10 +93,19 @@ export class CarritoPage implements OnInit {
 
 
 
-  borrarProducto(produc: Product){
-    this.carritoService.eliminarProducto(produc);
-    // this.carritoService.cargarProductos();
-    console.log(produc);
+  async borrarProducto(productos: Product){
+    
+    await this.carritoService.eliminarProducto(productos);
+
+    this.ngOnInit();
+
+    this.lista.closeSlidingItems();
+    
   }
+
+
+  // obtenerNumero(){
+  //   this.carritoService.numeroProductos();
+  // }
 
 }

@@ -90,6 +90,7 @@ export class CarrritoService {
 
       precio = parseFloat(reemplazo);
 
+      
       this.total = this.total+ precio;
     }
 
@@ -101,28 +102,33 @@ export class CarrritoService {
 
   eliminarProducto(producto: Product){
 
-    let existe = false;
+    //let existe = false;
     let mensaje ='';
 
-    for ( const prod of this.productos){
-      if (prod.id_producto === producto.id_producto){
-        
-        this.productos = this. productos.filter( prod => prod.id_producto !== producto.id_producto);
-        mensaje = 'Producto eliminado';
-      }
+    this.productos = this.productos.filter( prod => prod.id_producto !== producto.id_producto);
+    
+    mensaje = 'Producto eliminado';
+
+    this.presentToast(mensaje);
+    
+    return this.storage.set('productos', this.productos);
+
+    
+  }
+
+
+  async numeroProductos(){
+
+    let contador = 0;
+
+    const productos = await this.cargarProductos();
+
+    for ( const prod of productos){
+      contador = contador+1;
     }
 
-    // if (existe){
-    // }else{
-    //   this.productos.push(producto);
-    //   mensaje = 'Agregada al carrito';
-    // }
+    return contador;
 
-    // return !existe;
-
-
-    // this.presentToast(mensaje);
-    // this.storage.set('productos', this.productos);
   }
   
 
