@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button text="" defaultHref="/"></ion-back-button>
         </ion-buttons>
-      <ion-title>Productos</ion-title>
+      <ion-title>{{producto}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -22,16 +22,16 @@
                 <h4 style="padding-top: 12px;">
                   {{ p.precio }} $
                 </h4>
-                <!-- <p>
+                <p>
                   <ion-buttons slot="start">
-                    <ion-button (click)="onClick()" color="primary">
+                    <!-- <ion-button (click)="onClick()" color="primary">
                       <ion-icon slot="start" name="cart"></ion-icon>
-                    </ion-button>
-                    <ion-button color="canasta" (click)="verDetalle( p.id_producto)">
+                    </ion-button> -->
+                    <ion-button color="canasta">
                       <ion-icon slot="start" name="eye"></ion-icon>
                     </ion-button>
                   </ion-buttons>
-                </p> -->
+                </p>
               </ion-label>
             </ion-item>
           </ion-list>

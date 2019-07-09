@@ -9,6 +9,24 @@
 
 <ion-content>
 
+  <ion-slides *ngIf="carritoService.productos.length === 0" style="padding-top: 60px;" class="swiper-no-swiping">
+    <ion-slide>
+
+      <h1>Carrito vacío</h1>
+      <br>
+
+    </ion-slide>
+  </ion-slides>
+  
+  <ion-slides *ngIf="carritoService.productos.length === 0" style="padding-top: 60px;" class="swiper-no-swiping">
+      <ion-slide>
+          <ion-button shape="round" expand="full" size="small" fill="outline" color="primary" routerLink="/inicio">
+              <ion-icon name="cart" slot="start"></ion-icon>
+              <ion-label>Ir a la tienda</ion-label> 
+            </ion-button>
+      </ion-slide>
+    </ion-slides>
+
   <ion-list padding #lista>
     <ion-item-sliding *ngFor="let p of productos">
       <ion-item>
@@ -48,10 +66,10 @@
 
       </ion-col>
       <ion-col size="4">
-        TOTAL
+        <h5 style="font-weight: bold;">TOTAL CARRITO </h5>
       </ion-col>
       <ion-col size="4">
-        {{total}} $
+        <h5 style="font-weight: bold;">{{total}} $ </h5>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -60,10 +78,23 @@
     <ion-button expand="full" color="primary" (click)="obtenerTotal()">Total</ion-button>
   </ion-card> -->
 
-  <ion-card>
-    <ion-card-content>
-      <ion-button expand="full" color="success" (click)="payWithPaypal()">Pagar con PayPal</ion-button>
+  <ion-card *ngIf="total>0">
+    <ion-card-content no-border>
+
+      <ion-button shape="round" expand="full" size="small" fill="outline" color="primary" routerLink="/inicio">
+        <ion-icon name="cart" slot="start"></ion-icon>
+        <ion-label>Seguir comprando</ion-label>
+      </ion-button>
+
+      <ion-button shape="round" expand="full" size="small" fill="outline" color="success" (click)="payWithPaypal()">
+        <ion-icon name="cash" slot="start"></ion-icon>
+        <ion-label>Finalizar compra</ion-label>
+      </ion-button>
+
+      <!-- <ion-button expand="full" color="primary" routerLink="/inicio">Seguir comprando</ion-button>
+      <ion-button expand="full" color="success" (click)="payWithPaypal()">Finalizar compra</ion-button> -->
     </ion-card-content>
   </ion-card>
 
 </ion-content>
+

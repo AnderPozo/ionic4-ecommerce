@@ -59,7 +59,7 @@
             <ion-card-subtitle>{{p.nombre.substring(0,20)}}...</ion-card-subtitle>
             <img src="{{p.urlImagen}}">
             <ion-card-title >
-              <h2 class="textoPrecio">{{p.precio}} $ </h2>
+              <h2 style="font-weight: bold;">{{p.precio}} $ </h2>
             </ion-card-title>
           </ion-card-header>
 
@@ -86,12 +86,6 @@
   </ion-slides>
   <br> -->
 
-  <!-- <ion-button routerLink="/productos" class="ion-align-items-center">
-    <ion-icon slot="start" name="add"></ion-icon>
-    Todos los productos
-  </ion-button> -->
-
-
   <ion-item-divider color="canasta" class="ion-align-items-center">
     <ion-text class="texto1">
       <h2>Televisores...</h2>
@@ -105,7 +99,9 @@
         <ion-card-header>
           <ion-card-subtitle>{{t.nombre.substring(0,20)}}...</ion-card-subtitle>
           <img src="{{t.urlImagen}}">
-          <ion-card-title>{{t.precio}} $</ion-card-title>
+          <ion-card-title>
+            <h3 style="font-weight: bold;">{{t.precio}} $</h3>
+          </ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -141,7 +137,9 @@
         <ion-card-header>
           <ion-card-subtitle>{{te.nombre.substring(0,20)}}...</ion-card-subtitle>
           <img src="{{te.urlImagen}}">
-          <ion-card-title>{{te.precio}} $</ion-card-title>
+          <ion-card-title>
+              <h3 style="font-weight: bold;">{{te.precio}} $</h3>
+          </ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -183,3 +181,11 @@
   </ion-grid> -->
 
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-title>
+          <p class="textoFooter">&copy; 2019 Canasta fronteriza<p>
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>

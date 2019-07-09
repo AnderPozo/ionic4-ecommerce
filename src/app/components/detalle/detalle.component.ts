@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Product } from 'src/app/interfaces/interfaces';
 import { ModalController, NavController } from '@ionic/angular';
 import { CarrritoService } from 'src/app/services/carrrito.service';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-detalle',
@@ -20,7 +21,8 @@ export class DetalleComponent implements OnInit {
   constructor( private dataService: DataService,
                private modalCtrl: ModalController,
                private carritoService: CarrritoService,
-               private navCtrl:NavController) { }
+               private navCtrl:NavController,
+               private socialSharing: SocialSharing) { }
 
   async ngOnInit() {
     // console.log('ID', this.id);
@@ -46,6 +48,19 @@ export class DetalleComponent implements OnInit {
   verCarrito(){
     this.modalCtrl.dismiss();
     this.navCtrl.navigateRoot('/carrito', {animated: true});
+  }
+
+  compartir(){
+    this.socialSharing.share(
+      this.producto.nombre,
+      this.producto.descripcion,
+      this.producto.urlImagen,
+      'http://35.199.113.136/tiendaEP/'
+    )
+
+    // console.log(this.producto.nombre);
+    // console.log(this.producto.descripcion);
+    // console.log(this.producto.urlImagen);
   }
 
 }

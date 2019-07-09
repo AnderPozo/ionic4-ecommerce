@@ -46,7 +46,7 @@ export class CarrritoService {
       mensaje = 'El producto ya ha sido agregado';
     }else{
       this.productos.push(producto);
-      mensaje = 'Agregada al carrito';
+      mensaje = 'Agregado al carrito';
     }
 
     // return !existe;

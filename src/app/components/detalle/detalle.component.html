@@ -28,13 +28,19 @@
     
 
     <ion-button shape="round" expand="full" size="small" fill="outline" color="primary" (click)="agregarCarro()">
-      <ion-icon name="cart"></ion-icon>
-      Agregar al carrito
+      <ion-icon name="cart" slot="start"></ion-icon>
+      <ion-label>Agregar al carrito</ion-label> 
     </ion-button>
 
     <ion-button shape="round" expand="full" size="small" fill="outline" color="canasta" (click)="verCarrito()">
-      <ion-icon name="eye"></ion-icon>
-      Ver carrito
+      <ion-icon name="eye" slot="start"></ion-icon>
+      <ion-label>Ver carrito</ion-label> 
     </ion-button>
+
+    <ion-button shape="round" expand="full" size="small" fill="outline" color="tertiary" (click)="compartir()">
+      <ion-icon name="share" slot="start"></ion-icon>
+      <ion-label>Compartir</ion-label> 
+    </ion-button>
+
   </ion-card>
 </ion-content>

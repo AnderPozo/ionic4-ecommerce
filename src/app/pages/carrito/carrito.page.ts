@@ -31,7 +31,6 @@ export class CarritoPage implements OnInit {
   async ngOnInit() {
     this.productos = await this.carritoService.cargarProductos();
     this.total = this.obtenerTotal();
-
   }
 
   async obtenerTotal(){

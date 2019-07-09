@@ -15,6 +15,7 @@ import { HttpModule } from '@angular/http';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { PayPal} from '@ionic-native/paypal/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { PayPal} from '@ionic-native/paypal/ngx';
     StatusBar,
     SplashScreen,
     PayPal,
+    SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

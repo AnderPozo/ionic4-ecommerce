@@ -44,26 +44,16 @@
             <h4 style="padding-top: 12px;">
               {{ art.precio }} $
             </h4>
-            <!-- <p>
+            <p>
               <ion-buttons slot="start">
-                <ion-button color="canasta"  (click)="verDetalle( art.id_producto)">
+                <ion-button color="canasta">
                   <ion-icon slot="start" name="eye"></ion-icon>
                 </ion-button>
               </ion-buttons>
-            </p> -->
+            </p>
           </ion-label>
         </ion-item>
       </ion-list>
     </ion-card>
 
-
-
-  <!-- <ion-item>
-                    <ion-label>Seleccione una categoria</ion-label>
-                      <ion-select  multiple="false" (ionChange)="onSearchChange($event)">
-                        <div *ngFor="let p of productos">
-                        <ion-select-option value="{{p.nombre}}">{{c.nombre}}</ion-select-option>
-                        </div>  
-                      </ion-select>
-                  </ion-item> -->
 </ion-content>
