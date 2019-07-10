@@ -57,6 +57,8 @@ export class InicioPage implements OnInit {
 
   ngOnInit() {
 
+    this.menuCtrl.enable(true,'primerMenu');
+
 
     this.dataService.getProductos().subscribe(resp =>{
       //console.log('productos',resp.items);

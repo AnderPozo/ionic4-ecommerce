@@ -4,6 +4,7 @@ import { Product } from 'src/app/interfaces/interfaces';
 import { CarrritoService } from 'src/app/services/carrrito.service';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { LoginService } from 'src/app/services/login.service';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class CarritoPage implements OnInit {
   constructor(private carritoService: CarrritoService, 
               private payPal: PayPal, 
               private navCtrl:NavController,
-              private toastCtrl: LoginService) { }
+              private toastCtrl: LoginService,
+              private storage: Storage) { }
 
   paymentAmount: string = '3.33';
   currency: string = 'USD';
@@ -65,6 +67,7 @@ export class CarritoPage implements OnInit {
         this.payPal.renderSinglePaymentUI(payment).then((res) => {
           // console.log('Pago efectuado:',res);
           this.toastCtrl.alertaInfomartiva('Transferencia exitosa');
+          this.storage.remove('productos');
           
         }, () => {
           // Error or render dialog closed without being successful

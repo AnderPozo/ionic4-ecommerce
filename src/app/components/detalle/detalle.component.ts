@@ -56,11 +56,30 @@ export class DetalleComponent implements OnInit {
       this.producto.descripcion,
       this.producto.urlImagen,
       'http://35.199.113.136/tiendaEP/'
-    )
-
-    // console.log(this.producto.nombre);
-    // console.log(this.producto.descripcion);
-    // console.log(this.producto.urlImagen);
+    );
   }
+
+
+  // compartirFacebook(){
+  //   this.socialSharing.shareViaFacebook(
+  //     this.producto.nombre,
+  //     this.producto.urlImagen,
+  //     null
+  //   );
+  // }
+
+
+  // compartirTwitter(){
+  //   this.socialSharing.shareViaTwitter(
+  //     this.producto.nombre,
+  //     this.producto.urlImagen,
+  //     null
+  //   );
+  // }
+
+
+
+
+
 
 }

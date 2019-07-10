@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Http } from '@angular/http';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
 import { Storage } from '@ionic/storage';
 
@@ -15,12 +15,17 @@ export class LoginPage implements OnInit {
   logindata: any = {};
   
 
-  constructor(public navCtrl: NavController, public http: Http, private loginService: LoginService,private storage: Storage) {
+  constructor(public navCtrl: NavController, 
+              public http: Http, 
+              private loginService: LoginService,
+              private storage: Storage,
+              private menuCtrl: MenuController) {
     this.logindata.usuario = "";
     this.logindata.password = "";
    }
 
   ngOnInit() {
+    this.menuCtrl.enable(false,'primerMenu');
   }
 
   login(){

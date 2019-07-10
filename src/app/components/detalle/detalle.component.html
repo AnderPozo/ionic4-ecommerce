@@ -10,13 +10,29 @@
 </ion-header>
 
 <ion-content>
+
+  <!-- <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="bottom">
+      <ion-fab-button color="primary" (click)="compartirFacebook()">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="secondary" (click)="compartirTwitter()">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab> -->
+
   <ion-card>
     <ion-card-header>
       <img src="{{producto.urlImagen}}">
       <ion-card-subtitle style="font-size: 25px;" color="success">
         {{producto.precio}} $
       </ion-card-subtitle>
-        <ion-card-title>{{producto.nombre}}</ion-card-title>
+      <ion-card-title>{{producto.nombre}}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="descripcion">
       <p style="text-align: justify;">{{producto.descripcion | slice: 0: oculto}}...</p>
@@ -25,21 +41,21 @@
       <div [innerHTML]="producto.proveedor">
       </div>
     </ion-card-content>
-    
+
 
     <ion-button shape="round" expand="full" size="small" fill="outline" color="primary" (click)="agregarCarro()">
       <ion-icon name="cart" slot="start"></ion-icon>
-      <ion-label>Agregar al carrito</ion-label> 
+      <ion-label>Agregar al carrito</ion-label>
     </ion-button>
 
     <ion-button shape="round" expand="full" size="small" fill="outline" color="canasta" (click)="verCarrito()">
       <ion-icon name="eye" slot="start"></ion-icon>
-      <ion-label>Ver carrito</ion-label> 
+      <ion-label>Ver carrito</ion-label>
     </ion-button>
 
     <ion-button shape="round" expand="full" size="small" fill="outline" color="tertiary" (click)="compartir()">
       <ion-icon name="share" slot="start"></ion-icon>
-      <ion-label>Compartir</ion-label> 
+      <ion-label>Compartir</ion-label>
     </ion-button>
 
   </ion-card>
